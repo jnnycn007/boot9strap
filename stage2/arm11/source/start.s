@@ -29,6 +29,9 @@ start:
     mcr     p15, 0, r0, c7, c7, 0
     mcr     p15, 0, r0, c7, c10, 4
 
+    // Set stack pointer
+    ldr     sp, =__stack_top__
+
     // Clear BSS
     ldr     r0, =__bss_start__
     mov     r1, #0
@@ -46,7 +49,6 @@ start:
     mov     r0, #0
     mcr     p15, 0, r0, c7, c10, 4
 
-    ldr     sp, =__stack_top__
     b       arm11Main
 END_FUNCTION
 
